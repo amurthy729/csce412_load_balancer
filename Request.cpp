@@ -11,20 +11,44 @@ Request::Request()
     b2 = rand() % 256;
     b3 = rand() % 256;
     b4 = rand() % 256;
+    time = rand() % 50 + 1; // between 1-50 clock cycles
 }
 
-int *Request::get_IP_in()
+std::vector<int> Request::get_IP_in()
 {
-    int ip[4] = {a1, a2, a3, a4};
+    std::vector<int> ip;
+    ip.push_back(a1);
+    ip.push_back(a2);
+    ip.push_back(a3);
+    ip.push_back(a4);
     return ip;
 }
 
-int *Request::get_IP_out()
+std::vector<int> Request::get_IP_out()
 {
-    int ip[4] = {b1, b2, b3, b4};
+    std::vector<int> ip;
+    ip.push_back(b1);
+    ip.push_back(b2);
+    ip.push_back(b3);
+    ip.push_back(b4);
+    return ip;
 }
 
 int Request::get_time()
 {
     return time;
+}
+
+void Request::time_dec()
+{
+    time--;
+}
+
+bool Request::complete()
+{
+    if (time <= 0)
+    {
+        return true;
+    }
+    return false;
 }

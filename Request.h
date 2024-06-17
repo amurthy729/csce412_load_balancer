@@ -1,6 +1,8 @@
 #ifndef REQUEST_H
 #define REQUEST_H
 
+#include <vector>
+
 class Request
 {
 private:
@@ -8,10 +10,12 @@ private:
     int b1, b2, b3, b4; // IP out
     int time;           // time to process request
 public:
-    Request(); // default constructor
-    int *get_IP_in();
-    int *get_IP_out();
-    int get_time();
+    Request();                     // default constructor
+    std::vector<int> get_IP_in();  // return ip in
+    std::vector<int> get_IP_out(); // return ip out
+    int get_time();                // time remaining on request
+    void time_dec();               // reduce time by 1
+    bool complete();               // return if the request is complete
 };
 
 #endif
