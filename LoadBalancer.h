@@ -6,18 +6,47 @@
 #include <queue>
 #include <vector>
 
+/**
+ * @class LoadBalancer
+ * @brief A class to manage the distribution of network requests to web servers.
+ */
 class LoadBalancer
 {
 private:
-    std::queue<Request> requests;   // requests queue
-    std::vector<Webserver> servers; // server list
+    std::queue<Request> requests;   ///< Queue of incoming requests.
+    std::vector<Webserver> servers; ///< List of web servers.
 
 public:
-    void assignRequest();         // assigns request to least busy server
-    void addRequest(Request rq);  // adds request to requests queue
-    void addServer(Webserver ws); // adds server to server list
-    int requestsRemaining();      // requests remain
-    void work();                  // tell servers to go do work
+    /**
+     * @brief Assign a request to the least busy server.
+     */
+    void assignRequest();
+
+    /**
+     * @brief Add a request to the requests queue.
+     *
+     * @param rq The request to be added.
+     */
+    void addRequest(Request rq);
+
+    /**
+     * @brief Add a web server to the server list.
+     *
+     * @param ws The web server to be added.
+     */
+    void addServer(Webserver ws);
+
+    /**
+     * @brief Get the number of requests remaining in the queue.
+     *
+     * @return The number of requests remaining.
+     */
+    int requestsRemaining();
+
+    /**
+     * @brief Command all servers to perform one cycle of work.
+     */
+    void work();
 };
 
-#endif
+#endif // LOADBALANCER_H

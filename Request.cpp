@@ -1,6 +1,12 @@
 #include <stdlib.h>
 #include "Request.h"
 
+/**
+ * @brief Construct a new Request::Request object.
+ *
+ * Initializes the input and output IP addresses with random values between 0-255.
+ * Sets the time to process the request to a random value between 5 and 1004.
+ */
 Request::Request()
 {
     a1 = rand() % 256;
@@ -11,26 +17,18 @@ Request::Request()
     b2 = rand() % 256;
     b3 = rand() % 256;
     b4 = rand() % 256;
-    time = rand() % 1000 + 5; // between 1-50 clock cycles
+    time = rand() % 1000 + 5; // between 5 and 1004 clock cycles
 }
 
 std::vector<int> Request::get_IP_in()
 {
-    std::vector<int> ip;
-    ip.push_back(a1);
-    ip.push_back(a2);
-    ip.push_back(a3);
-    ip.push_back(a4);
+    std::vector<int> ip = {a1, a2, a3, a4};
     return ip;
 }
 
 std::vector<int> Request::get_IP_out()
 {
-    std::vector<int> ip;
-    ip.push_back(b1);
-    ip.push_back(b2);
-    ip.push_back(b3);
-    ip.push_back(b4);
+    std::vector<int> ip = {b1, b2, b3, b4};
     return ip;
 }
 
@@ -46,9 +44,5 @@ void Request::time_dec()
 
 bool Request::complete()
 {
-    if (time <= 0)
-    {
-        return true;
-    }
-    return false;
+    return time <= 0;
 }
