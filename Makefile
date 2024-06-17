@@ -1,8 +1,8 @@
 CXX = g++
 CPPFLAGS = -Wall -Werror -g
-all: myprogram
-myprogram: LoadBalancer.o Request.o Webserver.o main.o
-	$(CXX) $(CPPFLAGS) -o myprogram LoadBalancer.o Request.o Webserver.o main.o
+all: lb
+lb: LoadBalancer.o Request.o Webserver.o main.o
+	$(CXX) $(CPPFLAGS) -o lb LoadBalancer.o Request.o Webserver.o main.o
 LoadBalancer.o: LoadBalancer.cpp
 	$(CXX) $(CPPFLAGS) -c LoadBalancer.cpp
 Request.o: Request.cpp
@@ -12,4 +12,4 @@ Webserver.o: Webserver.cpp
 main.o:
 	$(CXX) $(CPPFLAGS) -c main.cpp
 clean:
-	rm -f myprogram *.o
+	rm -f lb *.o

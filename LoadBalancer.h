@@ -16,7 +16,8 @@ public:
     void assignRequest();         // assigns request to least busy server
     void addRequest(Request rq);  // adds request to requests queue
     void addServer(Webserver ws); // adds server to server list
-    int requestsRemaining();
+    int requestsRemaining();      // requests remain
+    void work();                  // tell servers to go do work
 };
 
 #endif

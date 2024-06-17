@@ -16,6 +16,7 @@ void LoadBalancer::assignRequest()
         if (servers[serverIndex].connections() < MAX_CONNECTIONS)
         {
             servers[serverIndex].acceptRequest(requests.front());
+            requests.pop();
         }
     }
 }
@@ -33,4 +34,12 @@ void LoadBalancer::addServer(Webserver ws)
 int LoadBalancer::requestsRemaining()
 {
     return requests.size();
+}
+
+void LoadBalancer::work()
+{
+    for (long unsigned int i = 0; i < servers.size(); i++)
+    {
+        servers[i].work();
+    }
 }

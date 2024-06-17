@@ -26,13 +26,14 @@ int main()
     // run for time amount of clock cycles
     for (int i = 0; i < time; i++)
     {
-        int random = rand() % 4; // 1 in 4 chance to add a new request
+        int random = rand() % 5; // 1 in 25 chance to add a new request
         if (random == 0)
         {
             Request r = Request();
             lb.addRequest(r);
         }
         lb.assignRequest();
+        lb.work();
     }
     std::cout << "Requests Outstanding: " << lb.requestsRemaining() << std::endl;
     return 0;

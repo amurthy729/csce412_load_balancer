@@ -11,7 +11,7 @@ Request::Request()
     b2 = rand() % 256;
     b3 = rand() % 256;
     b4 = rand() % 256;
-    time = rand() % 50 + 1; // between 1-50 clock cycles
+    time = rand() % 1000 + 5; // between 1-50 clock cycles
 }
 
 std::vector<int> Request::get_IP_in()

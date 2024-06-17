@@ -1,4 +1,5 @@
 #include "Webserver.h"
+#include <iostream>
 
 Webserver::Webserver(int id)
 {
@@ -32,6 +33,11 @@ void Webserver::work()
 void Webserver::acceptRequest(Request rq)
 {
     requests.push_back(rq);
+    std::cout << "Webserver " << serverID << " accepted request of time " << rq.get_time() << std::endl;
+    std::vector<int> IP = rq.get_IP_in();
+    std::cout << "Incoming IP: " << IP[0] << "." << IP[1] << "." << IP[2] << "." << IP[3] << std::endl;
+    IP = rq.get_IP_out();
+    std::cout << "Outgoing IP: " << IP[0] << "." << IP[1] << "." << IP[2] << "." << IP[3] << std::endl;
 }
 
 int Webserver::connections()
